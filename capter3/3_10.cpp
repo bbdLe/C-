@@ -9,17 +9,20 @@ using std::string;
 
 int main()
 {
-	string total, currVal;
+	string str, astr;
 
-	if(cin >> total)
+	if(cin >> str)
 	{
-		while(cin >> currVal)
+		for(auto c : str)
 		{
-			total += " " + currVal;
+			if(!ispunct(c))
+			{
+				astr += c;
+			}
 		}
 
-		cout << total << endl;
+		cout << astr << endl;
 	}
-
+	
 	return 0;
 }
