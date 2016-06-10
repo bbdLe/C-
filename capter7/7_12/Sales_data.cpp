@@ -32,7 +32,7 @@ Sales_data add(const Sales_data &lhs, const Sales_data &rhs)
 	return sum;
 }
 
-Sales_data::Sales_data(istream &is)
+/*Sales_data::Sales_data(istream &is)
 {
 	read(is, *this);
-}
+}*/
