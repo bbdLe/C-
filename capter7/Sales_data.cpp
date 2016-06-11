@@ -32,7 +32,23 @@ Sales_data add(const Sales_data &lhs, const Sales_data &rhs)
 	return sum;
 }
 
-Sales_data::Sales_data(istream &is)
+Sales_data::Sales_data(const string &s, unsigned n, double p) : bookNo(s), revenue(n * p), units_sold(n) 
 {
+	cout << "(const std::string &s, unsigned n, double p)" << endl;
+}
+
+Sales_data::Sales_data(const string &s) : Sales_data(s, 0, 0)
+{
+	cout << "(const string &s)" << endl;
+}
+
+Sales_data::Sales_data(istream &is) : Sales_data("", 0, 0)
+{
+	cout << "(iostream &is)" << endl;
 	read(is, *this);
+}
+
+Sales_data::Sales_data() : Sales_data("", 0, 0)
+{
+	cout << "()" << endl;
 }
