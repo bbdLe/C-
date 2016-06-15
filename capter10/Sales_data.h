@@ -8,6 +8,7 @@ struct Sales_data
 	friend Sales_data add(const Sales_data &lhs, const Sales_data &rhs);
 	friend std::istream &read(std::istream &is, Sales_data &book);
 	friend std::ostream &print(std::ostream &os, const Sales_data &book);
+	friend std::istream &operator>>(std::istream &is, Sales_data &item);
 
 	public:
 		Sales_data(const std::string &s);
