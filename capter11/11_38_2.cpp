@@ -1,5 +1,5 @@
 #include <iostream>
-#include <map>
+#include <unordered_map>
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -7,9 +7,9 @@
 
 using namespace std;
 
-map<string, string> buildMap(ifstream &ifs)
+unordered_map<string, string> buildMap(ifstream &ifs)
 {
-	map<string, string> trans;
+	unordered_map<string, string> trans;
 	string word, afterWord;
 
 	while(ifs >> word)
@@ -24,7 +24,7 @@ map<string, string> buildMap(ifstream &ifs)
 	return trans;
 }
 
-const string transform(const string &str, map<string, string> &wordMap)
+const string transform(const string &str, unordered_map<string, string> &wordMap)
 {
 	if(wordMap.find(str) != wordMap.end())
 		return wordMap[str];
@@ -34,7 +34,7 @@ const string transform(const string &str, map<string, string> &wordMap)
 
 void word_transform(ifstream &infile, ifstream &tranfile)
 {
-	map<string, string> trans = buildMap(infile);
+	unordered_map<string, string> trans = buildMap(infile);
 	bool firstWord = true;
 	string word, line;
 
