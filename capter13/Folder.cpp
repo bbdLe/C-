@@ -38,7 +38,6 @@ void Folder::showMsg()
 	{
 		cout << m->content << endl;
 	}
-	cout << endl;
 }
 
 void Folder::add_to_message(const Folder &f)

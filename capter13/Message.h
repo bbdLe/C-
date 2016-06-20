@@ -9,7 +9,9 @@ class Message
 	public:
 		Message(const std::string &message = "") : content(message) {}
 		Message(const Message &);
+		Message(Message &&);
 		Message &operator=(const Message &);
+		Message &operator=(Message &&);
 		~Message();
 		void add(Folder &);
 		void remove(Folder &);
@@ -19,6 +21,7 @@ class Message
 		std::set<Folder *> folders;
 		void add_to_folders(const Message &);
 		void remove_from_folders();
+		void move_folder(Message *);
 };
 
 #endif

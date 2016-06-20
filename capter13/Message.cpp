@@ -2,6 +2,7 @@
 #include<set>
 #include"Message.h"
 #include"Folder.h"
+#include<iostream>
 
 using namespace std;
 
@@ -10,12 +11,29 @@ Message::Message(const Message &omsg) : content(omsg.content), folders(omsg.fold
 	add_to_folders(omsg);
 }
 
+Message::Message(Message &&msg) : content(std::move(msg.content))
+{
+	move_folder(&msg);
+	cout << "left refer" << endl;
+}
+
 Message &Message::operator=(const Message &omsg)
 {
 	remove_from_folders();
 	content = omsg.content;
 	folders = omsg.folders;
 	add_to_folders(omsg);
+}
+
+Message &Message::operator=(Message &&msg)
+{
+	if(&msg != this)
+	{
+		content = std::move(msg.content);
+		remove_from_folders();
+		move_folder(&msg);
+		cout << "left refer" << endl;
+	}
 }
 
 Message::~Message()
@@ -49,4 +67,15 @@ void Message::remove_from_folders()
 	{
 		f->remMsg(*this);
 	}
+}
+
+void Message::move_folder(Message *msg)
+{
+	folders = std::move(msg->folders);
+	for(auto f : folders)
+	{
+		f->remMsg(*msg);
+		f->addMsg(*this);
+	}
+	msg->folders.clear();
 }
