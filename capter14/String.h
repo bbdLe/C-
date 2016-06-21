@@ -15,6 +15,9 @@ class String
 		String(const char *);
 		String &operator=(const String &);
 		String &operator=(String &&) noexcept;
+		bool operator<(const String &);
+		char &operator[](std::size_t);
+		const char &operator[](std::size_t) const;
 		size_t size();
 		char *c_str();
 		void free();

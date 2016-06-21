@@ -33,6 +33,32 @@ StrVec &StrVec::operator=(StrVec &&other) noexcept
 	}
 }
 
+bool StrVec::operator<(const StrVec &other)
+{
+	auto p1 = elements;
+	auto p2 = other.elements;
+
+	while(p1 != first_free && p2 != other.first_free)
+	{
+		if(*p1 != *p2)
+			return *p1 < *p2;
+		else
+		{
+			++p1;
+			++p2;
+		}
+	}
+
+	if(p2 == other.first_free)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
 StrVec &StrVec::operator=(const StrVec &other)
 {
 	auto p = alloc_n_copy(other.elements, other.first_free);
@@ -47,6 +73,16 @@ StrVec &StrVec::operator=(initializer_list<string> li)
 	free();
 	elements = p.first;
 	cap = first_free = p.second;
+}
+
+string &StrVec::operator[](size_t n)
+{
+	return elements[n];
+}
+
+const string &StrVec::operator[](size_t n) const
+{
+	return elements[n];
 }
 
 StrVec::~StrVec()

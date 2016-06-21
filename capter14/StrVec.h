@@ -23,6 +23,9 @@ class StrVec
 		void reserve(size_t);
 		std::string at(size_t);
 		StrVec &operator=(std::initializer_list<std::string>);
+		bool operator<(const StrVec &);
+		std::string &operator[](std::size_t);
+		const std::string &operator[](std::size_t) const;
 
 	private:
 		static std::allocator<std::string> alloc;

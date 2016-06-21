@@ -24,6 +24,43 @@ bool operator!=(const String &a, const String &b)
 	return !(a == b);
 }
 
+bool String::operator<(const String &str)
+{
+	auto p1 = element;
+	auto p2 = str.element;
+
+	while(p1 != last && p2 != str.last)
+	{
+		if(*p1 != *p2)
+			return *p1 < *p2;
+		else
+		{
+			++p1;
+			++p2;
+		}
+	}
+
+	if(p2 == last)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+char &String::operator[](size_t n)
+{
+	return element[n];
+}
+
+const char &String::operator[](size_t n) const
+{
+	return element[n];
+}
+
+
 String::String(String &&str) noexcept : element(str.element), last(str.last)
 {
 	str.element = nullptr;
