@@ -21,6 +21,7 @@ class StrBlob
 		}
 		StrBlob(std::initializer_list<std::string> il);
 		void push(const std::string &str) {data->push_back(str);}
+		void push(std::string &&str) {data->push_back(std::move(str));}
 		void pop();
 		bool empty() const {return data->empty();}
 		std::string back() const;
