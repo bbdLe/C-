@@ -4,9 +4,9 @@
 
 using namespace std;
 
-ostream &print_total(ostream &os, const Quote &book, size_t n)
+double print_total(ostream &os, const Quote &book, size_t n)
 {
 	auto total = book.net_price(n);
-	os << "Book ISBN : " << book.Isbn() << ",sold : " << n << ",total: " << total;
-	return os;
+	os << "Book ISBN : " << book.Isbn() << ",sold : " << n << ",total: " << total << endl;
+	return total;
 }
