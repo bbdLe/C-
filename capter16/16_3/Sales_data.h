@@ -11,6 +11,7 @@ struct Sales_data
 	friend std::istream &operator>>(std::istream &is, Sales_data &item);
 	friend std::ostream &operator<<(std::ostream &os, const Sales_data &item);
 	friend Sales_data operator+(const Sales_data &lhs, const Sales_data &rhs);
+	friend bool operator<(const Sales_data &lhs, const Sales_data &rhs);
 	
 
 	public:

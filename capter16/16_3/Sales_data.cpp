@@ -97,3 +97,8 @@ ostream &operator<<(std::ostream &os, const Sales_data &item)
 	os << item.bookNo << " "  << item.units_sold << " " << item.revenue;
 	return os;
 }
+
+bool operator<(const Sales_data &lhs, const Sales_data &rhs)
+{
+	return lhs.bookNo < rhs.bookNo;
+}
